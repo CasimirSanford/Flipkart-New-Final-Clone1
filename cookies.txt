@@ -1,0 +1,4 @@
+# HTTrack Website Copier Cookie File
+# This file format is compatible with Netscape cookies
+flkart-supersave.shop	TRUE	/	FALSE	1999999999	PHPSESSID	hqui98etv3p3o2lq8auan67gu8
+

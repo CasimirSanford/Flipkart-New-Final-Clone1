@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Admin - Manage Products</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; }
+    h1 { margin-bottom: 10px; }
+    .product { border: 1px solid #ddd; padding: 10px; margin: 10px 0; }
+    .product img { height: 80px; display: block; margin-bottom: 5px; }
+    .actions button { margin-right: 5px; }
+    form input, form textarea { display: block; margin: 5px 0; padding: 5px; width: 300px; }
+  </style>
+</head>
+<body>
+  <h1>Admin: Manage Products</h1>
+  <form id="product-form">
+    <input type="text" id="title" placeholder="Product Title" required>
+    <input type="text" id="price" placeholder="Price" required>
+    <input type="text" id="mrp" placeholder="MRP">
+    <input type="text" id="image" placeholder="Main Image URL" required>
+    <textarea id="description" placeholder="Description (one per line)" rows="4"></textarea>
+    <input type="text" id="images" placeholder="Additional Images (comma-separated URLs)">
+    <button type="submit">Add Product</button>
+  </form>
+
+  <hr>
+  <h2>Existing Products</h2>
+  <div id="product-list"></div>
+
+  <script>
+    const form = document.getElementById('product-form');
+    const list = document.getElementById('product-list');
+    let products = JSON.parse(localStorage.getItem('products') || '[]');
+
+    function render() {
+      list.innerHTML = '';
+      products.forEach((p, i) => {
+        const el = document.createElement('div');
+        el.className = 'product';
+        el.innerHTML = `
+          <img src="${p.image}" alt="${p.title}">
+          <strong>${p.title}</strong><br>
+          Price: ₹${p.price} (MRP: ₹${p.mrp || p.price})<br>
+          <div class="actions">
+            <button onclick="edit(${i})">Edit</button>
+            <button onclick="del(${i})">Delete</button>
+          </div>
+        `;
+        list.appendChild(el);
+      });
+    }
+
+    function edit(i) {
+      const p = products[i];
+      form.title.value = p.title;
+      form.price.value = p.price;
+      form.mrp.value = p.mrp;
+      form.image.value = p.image;
+      form.description.value = Array.isArray(p.description) ? p.description.join('\n') : p.description;
+      form.images.value = Array.isArray(p.images) ? p.images.join(',') : '';
+      products.splice(i, 1);
+      localStorage.setItem('products', JSON.stringify(products));
+      render();
+    }
+
+    function del(i) {
+      products.splice(i, 1);
+      localStorage.setItem('products', JSON.stringify(products));
+      render();
+    }
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const newProduct = {
+        title: form.title.value,
+        price: form.price.value,
+        mrp: form.mrp.value,
+        image: form.image.value,
+        description: form.description.value.split('\n'),
+        images: form.images.value ? form.images.value.split(',') : []
+      };
+      products.push(newProduct);
+      localStorage.setItem('products', JSON.stringify(products));
+      form.reset();
+      render();
+    });
+
+    render();
+  </script>
+</body>
+</html>

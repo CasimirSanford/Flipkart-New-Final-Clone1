@@ -1,0 +1,164 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Noise Pulse Go Buzz Smartwatch</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../cosmicAssets/css/bootstrap.core.min.css">
+    <link rel="stylesheet" href="../cosmicAssets/css/userCustomizations.css">
+    <style>
+        .love-icon, .share-icon {
+            width: 36px;
+            height: 36px;
+            display: block;
+            background-color: #fff;
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: 24px 24px;
+            border-radius: 50%;
+            border: 1px solid #eee;
+            padding: 24px;
+            position: absolute;
+            right: 0;
+            z-index: 1;
+        }
+        .love-icon {
+            background-image: url(../cosmicAssets/infinityMedia/love.png);
+        }
+        .share-icon {
+            background-image: url(../cosmicAssets/infinityMedia/share.png);
+            top: 60px;
+        }
+        .bottom-action-bar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background-color: #fff;
+            border-top: 1px solid #ddd;
+            display: flex;
+            padding: 10px;
+            gap: 10px;
+            justify-content: space-between;
+        }
+        .buynow-button {
+            flex: 1;
+            padding: 12px;
+            border: none;
+            border-radius: 4px;
+            font-weight: bold;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .buynow-button-white {
+            background-color: #ff9f00;
+            color: #fff;
+        }
+        .buynow-button:not(.buynow-button-white) {
+            background-color: #fb641b;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+
+<div class="_1fhgRH mb-5">
+    <div class="container p-1 card">
+        <div class="container-fluid px-0 product-slider">
+            <div class="love-icon"></div>
+            <div class="share-icon"></div>
+            <div id="sliderX" class="carousel slide" data-ride="carousel">
+                <ol class="carousel-indicators">
+                    <li data-bs-target="#sliderX" data-bs-slide-to="0" class="active"></li>
+                    <li data-bs-target="#sliderX" data-bs-slide-to="1"></li>
+                    <li data-bs-target="#sliderX" data-bs-slide-to="2"></li>
+                </ol>
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img class="d-block img-fluid m-auto lozad" style="height: 400px;" src="https://m.media-amazon.com/images/I/61Bo+WaKl6L._SL1500_.jpg" alt="Noise Pulse Go Buzz Image 1">
+                    </div>
+                    <div class="carousel-item">
+                        <img class="d-block img-fluid m-auto lozad" style="height: 400px;" src="https://m.media-amazon.com/images/I/61LKTD-YnrL._SL1500_.jpg" alt="Noise Pulse Go Buzz Image 2">
+                    </div>
+                    <div class="carousel-item">
+                        <img class="d-block img-fluid m-auto lozad" style="height: 400px;" src="https://m.media-amazon.com/images/I/61cUsUulmjL._SL1500_.jpg" alt="Noise Pulse Go Buzz Image 3">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid p-3 mt-1 card">
+        <div class="product-title">
+            Noise Pulse Go Buzz Smart Watch with Advanced Calling, 1.69" Display, 100+ Sports Modes, IP68 Waterproof (Jet Black)
+        </div>
+        <img style="width: 100px" class="my-2 lozad" src="../cosmicAssets/infinityMedia/plue-fassured.png" alt="plus-fassured">
+        <div class="product-price d-flex my-2">
+            <span class="discount">76% off</span>
+            <span class="mrp" id="mrp">₹4,999.00</span>
+            <span class="price" id="price">₹1,199.00</span>
+        </div>
+    </div>
+
+    <div class="container-fluid p-3 offerend-container card">
+        <div class="text-center">
+            <span class="ddgfgfefe">Offer ends in </span>
+            <span id="test"></span>
+        </div>
+    </div>
+
+    <div class="container-fluid p-3 mb-1 card">
+        <img class="my-2 lozad" src="../cosmicAssets/infinityMedia/pay-latter.png" alt="pay-later">
+    </div>
+
+    <div class="container-fluid px-2 py-3 d-flex feature-container product-extra card">
+        <div class="col-4 featured-item d-flex align-items-center flex-column bd-highlight px-1">
+            <img class="featured-img mb-3 lozad" src="../cosmicAssets/infinityMedia/replacement.png" />
+            <span class="feature-title"> 7 days Replacement </span>
+        </div>
+        <div class="col-4 featured-item d-flex align-items-center flex-column bd-highlight px-1">
+            <img class="featured-img mb-3 lozad" src="../cosmicAssets/infinityMedia/non-cod.png" />
+            <span class="feature-title"> No Cash On Delivery </span>
+        </div>
+        <div class="col-4 featured-item d-flex align-items-center flex-column bd-highlight px-1">
+            <img class="featured-img mb-3 mt-1 lozad" src="../cosmicAssets/infinityMedia/plue-fassured.png" />
+            <span class="feature-title"> Plus (F-Assured) </span>
+        </div>
+    </div>
+
+    <div class="container-fluid product-detail px-0 py-3 mb-5 card">
+        <div class="product-details">
+            <table class="table">
+                <tr><td><strong>Brand</strong></td><td>Noise</td></tr>
+                <tr><td><strong>Colour</strong></td><td>Jet Black</td></tr>
+                <tr><td><strong>Dial Shape</strong></td><td>Rectangular</td></tr>
+                <tr><td><strong>Connectivity</strong></td><td>Bluetooth</td></tr>
+                <tr><td><strong>Compatible OS</strong></td><td>Android & iOS</td></tr>
+            </table>
+        </div>
+        <div id="feature-bullets" class="a-section">
+            <h1>About this item</h1>
+            <ul>
+                <li>1.69” full-touch display with vibrant colors</li>
+                <li>Bluetooth calling with built-in speaker and mic</li>
+                <li>100+ sports modes and smart notifications</li>
+                <li>IP68 waterproof design</li>
+                <li>Health tracking: SpO2, heart rate, sleep monitor</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- Fixed Buy Now / Add to Cart Buttons with correct product data -->
+<div class="bottom-action-bar">
+<button class="buynow-button product-page-buy" onclick="buyNow(title='OnePlus Bullets Z2 Bluetooth Wireless in Ear Earphones with Mic, Bombastic Bass, 10 Mins Charge - 20 Hrs Music, 30 Hrs Battery Life (Acoustic Red)',price='299.00',mrp='1799.00',image='../../../m.media-amazon.com/images/I/5171kgKguGL._SL1500_.jpg');"> Add To Cart </button>
+<button class="buynow-button product-page-buy" onclick="buyNow(title='OnePlus Bullets Z2 Bluetooth Wireless in Ear Earphones with Mic, Bombastic Bass, 10 Mins Charge - 20 Hrs Music, 30 Hrs Battery Life (Acoustic Red)',price='299.00',mrp='1799.00',image='../../../m.media-amazon.com/images/I/5171kgKguGL._SL1500_.jpg');"> Buy Now </button>
+</div>
+
+<script src="../cosmicAssets/js/jquery.min.js"></script>
+<script src="../cosmicAssets/js/bootstrap.bundle.min.js"></script>
+<script defer src="../cosmicAssets/js/productController.js"></script>
+</body>
+</html>

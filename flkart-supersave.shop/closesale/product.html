@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Product</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="../cosmicAssets/css/bootstrap.core.min.css">
+  <link rel="stylesheet" href="../cosmicAssets/css/userCustomizations.css">
+</head>
+<body>
+  <div class="container-fluid p-3 mt-1 card">
+    <div id="product-carousel" class="carousel slide" data-ride="carousel">
+      <ol class="carousel-indicators" id="carousel-indicators"></ol>
+      <div class="carousel-inner" id="carousel-images"></div>
+    </div>
+  </div>
+
+  <div class="container-fluid p-3 mt-1 card">
+    <div class="product-title" id="product-title">Loading...</div>
+    <img style="width: 100px" class="my-2" src="../cosmicAssets/infinityMedia/plue-fassured.png" alt="plue-fassured">
+    <div class="product-price d-flex my-2">
+      <span class="discount" id="product-discount"></span>
+      <span class="mrp" id="product-mrp"></span>
+      <span class="price" id="product-price"></span>
+    </div>
+  </div>
+
+  <div class="container-fluid product-detail px-0 py-3 mb-4 card">
+    <h1>About this item</h1>
+    <ul id="product-description" class="a-unordered-list a-vertical a-spacing-mini"></ul>
+  </div>
+
+  <script>
+    const id = parseInt(new URLSearchParams(window.location.search).get('id'));
+    const products = JSON.parse(localStorage.getItem('products') || '[]');
+    const product = products[id];
+
+    if (!product) {
+      document.body.innerHTML = "<h2>Product not found.</h2>";
+    } else {
+      document.getElementById("product-title").textContent = product.title;
+      document.getElementById("product-price").textContent = `₹ ${product.price}`;
+      document.getElementById("product-mrp").textContent = `₹ ${product.mrp || product.price}`;
+      const discount = Math.round(100 - (product.price / product.mrp) * 100);
+      if (discount > 0) document.getElementById("product-discount").textContent = `${discount}% off`;
+
+      const imageList = Array.isArray(product.images) ? product.images : [product.image];
+      const carouselImages = document.getElementById("carousel-images");
+      const indicators = document.getElementById("carousel-indicators");
+
+      imageList.forEach((src, idx) => {
+        const div = document.createElement("div");
+        div.className = "carousel-item" + (idx === 0 ? " active" : "");
+        div.innerHTML = `<img class="d-block img-fluid m-auto" style="height: 400px;" src="${src}">`;
+        carouselImages.appendChild(div);
+
+        const li = document.createElement("li");
+        li.setAttribute("data-bs-target", "#product-carousel");
+        li.setAttribute("data-bs-slide-to", idx);
+        if (idx === 0) li.className = "active";
+        indicators.appendChild(li);
+      });
+
+      const descEl = document.getElementById("product-description");
+      const descItems = Array.isArray(product.description) ? product.description : [product.description];
+      descItems.forEach((text) => {
+        const li = document.createElement("li");
+        li.className = "a-spacing-mini";
+        li.innerHTML = `<span class="a-list-item">${text}</span>`;
+        descEl.appendChild(li);
+      });
+    }
+  </script>
+</body>
+</html>
